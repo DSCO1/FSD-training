@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABES Engineering College Class Time Table</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5;
+        }
+        .timetable-container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            overflow-x: auto;
+        }
+        .timetable {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 1200px;
+        }
+        .timetable th, .timetable td {
+            border: 1px solid #d1d5db;
+            padding: 0.75rem;
+            text-align: center;
+            font-size: 0.875rem;
+        }
+        .timetable th {
+            background-color: #f3f4f6;
+            font-weight: 600;
+        }
+        .timetable .day-header {
+            font-weight: 700;
+            background-color: #e5e7eb;
+        }
+        .timetable .time-slot {
+            font-size: 0.8rem;
+            color: #4b5563;
+        }
+        .vertical-text {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            background-color: #f3f4f6;
+        }
+        .highlight-yellow {
+            background-color: #fef08a; 
+        }
+        .subject-code {
+            font-weight: 500;
+            display: block;
+        }
+        .faculty-name {
+            font-size: 0.8rem;
+            color: #374151;
+            display: block;
+        }
+        .current-day {
+            background-color: #dbeafe; 
+        }
+        .current-day .day-header {
+            background-color: #93c5fd; 
+            color: white;
+        }
+        .footer-info {
+            margin-top: 1.5rem;
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+        .header-logo {
+            width: 80px;
+            height: auto;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-4 md:p-8">
+
+    <div class="timetable-container">
+
+        <header class="text-center mb-6">
+            <div class="flex justify-center items-center mb-4">
+                 <img src="https://www.abes.ac.in/images/abes-logo.png" alt="ABES Logo" class="header-logo" onerror="this.onerror=null;this.src='https://placehold.co/80x80/cccccc/000000?text=Logo';">
+            </div>
+            <h1 class="text-2xl md:text-3xl font-bold text-gray-800">ABES Engineering College, Ghaziabad</h1>
+            <h2 class="text-xl md:text-2xl font-semibold text-gray-700 mt-2">CLASS TIME TABLE</h2>
+        </header>
+
+
+        <div class="flex flex-wrap justify-between items-center text-sm md:text-base text-gray-600 mb-6">
+            <div>
+                <p><strong>Course:</strong> B. Tech</p>
+                <p><strong>Semester/ Section:</strong> V / A</p>
+                <p><strong>Class Room No:</strong> KC-3F-LT-305</p>
+            </div>
+            <div class="text-center my-2 md:my-0">
+                <p><strong>DEPARTMENT:</strong> CSE-DS</p>
+                <p><strong>SESSION:</strong> 2025-26</p>
+            </div>
+            <div class="text-right">
+                <p><strong>w.e.f.</strong> – 26 Aug, 2025</p>
+                <p><strong>Odd Semester</strong></p>
+            </div>
+        </div>
+
+        <table class="timetable">
+            <thead>
+                <tr>
+                    <th>DAY</th>
+                    <th>8:50-9:40<br><span class="time-slot">L1</span></th>
+                    <th>9:40-10:30<br><span class="time-slot">L2</span></th>
+                    <th>10:40-11:30<br><span class="time-slot">L3</span></th>
+                    <th>11:30-12:20<br><span class="time-slot">L4</span></th>
+                    <th>12:20-1:10</th>
+                    <th>1:10-2:00<br><span class="time-slot">L5</span></th>
+                    <th>2:00-2:50<br><span class="time-slot">L6</span></th>
+                    <th>2:50-3:40<br><span class="time-slot">L7</span></th>
+                    <th>3:40-4:30<br><span class="time-slot">L8</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                <tr id="day-Mon">
+                    <td class="day-header">Mon</td>
+                    <td><span class="subject-code">DBMS-BCS501-(YB)</span></td>
+                    <td><span class="subject-code">DBMS-BCS501-(YB)</span></td>
+                    <td colspan="2" class="highlight-yellow">
+                        <span class="subject-code">CSE(DS)-A || QA/LR</span>
+                        <span class="faculty-name">(Harshit Sharma)</span>
+                    </td>
+                    <td rowspan="5" class="vertical-text">LUNCH</td>
+                    <td><span class="subject-code">OOSD-BCS054-(VK)</span></td>
+                    <td colspan="3"><span class="subject-code">DSA Training- Ms. Priyanka Gpta</span></td>
+                </tr>
+        
+                <tr id="day-Tue">
+                    <td class="day-header">Tue</td>
+                    <td colspan="2"><span class="subject-code">DSA Training- Ms. Priyanka Gpta</span></td>
+                    <td rowspan="5" class="vertical-text">BREAK</td>
+                    <td><span class="subject-code">DSA Training-Ms. Priyanka Gpta</span></td>
+                    <td><span class="subject-code">DAA-BCS503-(MP)</span></td>
+                    <td><span class="subject-code">DA-BCDS501-(MS)</span></td>
+                    <td><span class="subject-code">DA-BCDS501-(MS)</span></td>
+                    <td><span class="subject-code">OOSD-BCS054-(VK)</span></td>
+                    <td><span class="subject-code">CSE(DS)-A ||SS (Dr. Abrity Thakur)</span></td>
+                </tr>
+        
+                <tr id="day-Wed">
+                    <td class="day-header">Wed</td>
+                    <td><span class="subject-code">DAA-BCS503-(MP)</span></td>
+                    <td><span class="subject-code">OOSD-BCS054-(VK)</span></td>
+                    <td>
+                        <span class="subject-code">Domain Training: DSAIML-LT305</span>
+                        <span class="subject-code">Cloud-LT-307</span>
+                        <span class="subject-code">Networking & Cyber Security-LT308</span>
+                    </td>
+                    <td><span class="subject-code">AOSC-BCS056-(Shreya)</span></td>
+                    <td class="highlight-yellow"><span class="subject-code">DBMS-BCS501-(YB)</span></td>
+                    <td><span class="subject-code">DA-BCDS551-(MS)(VK)</span></td>
+                    <td><span class="subject-code">DAA-BCS503-(MP)</span></td>
+                </tr>
+                
+                <tr id="day-Thu">
+                    <td class="day-header">Thu</td>
+                    <td><span class="subject-code">AOSC-BCS056-(Shreya)</span></td>
+                    <td><span class="subject-code">DBMS-BCS501-(YB)</span></td>
+                    <td class="highlight-yellow"><span class="subject-code">CSE(DS)-A || VA(LD)</span></td>
+                    <td><span class="subject-code">DAA Lab-BCS553-(MP)(DD)</span></td>
+                    <td colspan="2"><span class="subject-code">FSD Training Ms. Divya Raj</span></td>
+                    <td><span class="subject-code">DAA Lab-BCS553-(MP)(DD)</span></td>
+                </tr>
+    
+                <tr id="day-Fri">
+                    <td class="day-header">Fri</td>
+                    <td><span class="subject-code">AOSC-BCS056-(Shreya)</span></td>
+                    <td><span class="subject-code">DA-BCDS501-(MS)</span></td>
+                    <td><span class="subject-code">FSD Training Mr. Divya Raj</span></td>
+                    <td><span class="subject-code">DA-BCDS501-(MS)</span></td>
+                    <td><span class="subject-code">DAA-BCS503-(MP)</span></td>
+                    <td><span class="subject-code">DBMS Lab-BCS551-(YB)(DD)</span></td>
+                    <td><span class="subject-code">DBMS Lab-BCS551-(YB)(DD)</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Footer Information -->
+        <div class="footer-info">
+            <p><strong>BCS501:</strong> Database Management System - Ms. Yashi Bhardwa(YB)</p>
+            <p><strong>BCS056:</strong> Application of Soft Computing- Ms. Shreya(Shreya)</p>
+            <p><strong>VADSA501:</strong> DSA Training- Ms. Priyanka Gpta</p>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to highlight the current day
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            const currentDay = days[new Date().getDay()];
+            const todayRow = document.getElementById(`day-${currentDay}`);
+            if (todayRow) {
+                todayRow.classList.add('current-day');
+            }
+        });
+    </script>
+
+</body>
+</html>
+
+
+//hghg
