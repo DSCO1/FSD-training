@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Connect Form - Ujjawal Shrivastava</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        :root {
+            --primary-color: #00e5ff;
+            --primary-glow: rgba(0, 229, 255, 0.4);
+            --bg-dark: #081b29;
+            --bg-light-dark: #112e42;
+            --text-light: #ededed;
+            --text-secondary: #a0aec0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 0;
+        }
+        
+        .form-container {
+            background-color: var(--bg-light-dark);
+            border: 1px solid #1e3a50;
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 600px;
+        }
+        
+        .section-header {
+            position: relative;
+            padding-bottom: 0.75rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .section-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+        
+        .form-label {
+             display: block;
+             text-align: left;
+             font-size: 0.875rem;
+             font-weight: 500;
+             color: var(--text-secondary);
+             margin-bottom: 0.5rem;
+        }
+        .form-input, .form-select {
+            background-color: var(--bg-dark);
+            border: 1px solid #1e3a50;
+            color: var(--text-light);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+        .form-input::placeholder {
+            color: var(--text-secondary);
+        }
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px var(--primary-glow);
+        }
+        .select-wrapper {
+            position: relative;
+        }
+        .select-wrapper::after {
+            content: '\25BC';
+            font-size: 1rem;
+            color: var(--primary-color);
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+        .custom-control {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            cursor: pointer;
+        }
+        .custom-control input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .control-indicator {
+            width: 1.25rem;
+            height: 1.25rem;
+            border: 2px solid var(--primary-color);
+            background-color: var(--bg-dark);
+            transition: all 0.2s ease;
+        }
+        .custom-control .checkbox-indicator {
+            border-radius: 0.25rem;
+        }
+        .custom-control .radio-indicator {
+            border-radius: 50%;
+        }
+        .custom-control input:checked ~ .control-indicator {
+            background-color: var(--primary-color);
+            box-shadow: 0 0 5px var(--primary-glow);
+        }
+        
+        .submit-button {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            background-color: transparent;
+            box-shadow: 0 0 10px var(--primary-glow);
+            transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .submit-button:hover {
+            background-color: var(--primary-color);
+            color: var(--bg-dark);
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+    </style>
+</head>
+<body class="p-6">
+
+    <div class="form-container p-8">
+        <h2 class="text-3xl font-bold section-header">Student Connect Form</h2>
+        <form action="#" method="POST" class="space-y-6">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label for="first-name" class="form-label">First Name</label>
+                    <input type="text" name="first-name" id="first-name" class="form-input w-full px-4 py-3 rounded-lg" placeholder="Ujjawal" required>
+                </div>
+                <div>
+                    <label for="last-name" class="form-label">Last Name</label>
+                    <input type="text" name="last-name" id="last-name" class="form-input w-full px-4 py-3 rounded-lg" placeholder="Shrivastava" required>
+                </div>
+            </div>
+
+            <div>
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" name="email" id="email" class="form-input w-full px-4 py-3 rounded-lg" placeholder="you@example.com" required>
+            </div>
+            
+            <div>
+                <label for="year" class="form-label">Year of Study</label>
+                <div class="select-wrapper">
+                    <select id="year" name="year" class="form-select w-full px-4 py-3 rounded-lg" required>
+                        <option value="" disabled selected>Select your current year...</option>
+                        <option value="1">First Year</option>
+                        <option value="2">Second Year</option>
+                        <option value="3">Third Year</option>
+                        <option value="4">Fourth Year</option>
+                        <option value="grad">Graduate Student</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div>
+                <label class="form-label">Areas of Interest (Select all that apply)</label>
+                <div class="space-y-3">
+                    <label class="custom-control">
+                        <input type="checkbox" name="interest" value="ml">
+                        <span class="control-indicator checkbox-indicator"></span>
+                        <span>Machine Learning & AI</span>
+                    </label>
+                    <label class="custom-control">
+                        <input type="checkbox" name="interest" value="webdev">
+                        <span class="control-indicator checkbox-indicator"></span>
+                        <span>Web Development</span>
+                    </label>
+                    <label class="custom-control">
+                        <input type="checkbox" name="interest" value="cloud">
+                        <span class="control-indicator checkbox-indicator"></span>
+                        <span>Cloud Computing (GCP/AWS)</span>
+                    </label>
+                     <label class="custom-control">
+                        <input type="checkbox" name="interest" value="datasci">
+                        <span class="control-indicator checkbox-indicator"></span>
+                        <span>Data Science & Analytics</span>
+                    </label>
+                </div>
+            </div>
+
+            <div>
+                <label class="form-label">Preferred Contact Method</label>
+                <div class="flex flex-col md:flex-row md:gap-8 space-y-3 md:space-y-0">
+                    <label class="custom-control">
+                        <input type="radio" name="contact-method" value="email" checked>
+                        <span class="control-indicator radio-indicator"></span>
+                        <span>Email</span>
+                    </label>
+                    <label class="custom-control">
+                        <input type="radio" name="contact-method" value="phone">
+                        <span class="control-indicator radio-indicator"></span>
+                        <span>Phone Call</span>
+                    </label>
+                    <label class="custom-control">
+                        <input type="radio" name="contact-method" value="linkedin">
+                        <span class="control-indicator radio-indicator"></span>
+                        <span>LinkedIn Message</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div>
+                <button type="submit" class="submit-button w-full font-semibold px-8 py-3 rounded-full text-lg mt-4">
+                    Submit
+                </button>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
+
