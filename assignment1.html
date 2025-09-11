@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ujjawal Shrivastava | Aspiring Data Scientist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <style>
+        /* --- Dark & Glowing Theme Color Palette --- */
+        :root {
+            --primary-color: #00e5ff; /* Bright Cyan */
+            --primary-hover: #00c4ff;
+            --primary-glow: rgba(0, 229, 255, 0.4);
+            --bg-dark: #081b29; /* Dark Navy Blue */
+            --bg-light-dark: #112e42; /* Slightly Lighter Navy */
+            --text-light: #ededed;
+            --text-secondary: #a0aec0; /* Grayish for secondary text */
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+        }
+        
+        /* --- Header & Navigation --- */
+        .header {
+            background-color: rgba(8, 27, 41, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        .nav-link {
+             position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+        
+        /* --- Hero Section --- */
+        .hero-section {
+            background-color: var(--bg-dark);
+        }
+        .hero-image-glow {
+            border: 2px solid var(--primary-color);
+            box-shadow: 0 0 15px var(--primary-glow), 0 0 25px var(--primary-glow), inset 0 0 10px var(--primary-glow);
+            border-radius: 2rem;
+            animation: pulse 4s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 15px var(--primary-glow), 0 0 25px var(--primary-glow), inset 0 0 10px var(--primary-glow); }
+            50% { box-shadow: 0 0 25px var(--primary-glow), 0 0 40px var(--primary-glow), inset 0 0 15px var(--primary-glow); }
+            100% { box-shadow: 0 0 15px var(--primary-glow), 0 0 25px var(--primary-glow), inset 0 0 10px var(--primary-glow); }
+        }
+
+        /* --- Buttons & Social Icons --- */
+        .cta-button, .social-icon {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            box-shadow: 0 0 10px var(--primary-glow);
+            transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .cta-button:hover, .social-icon:hover {
+            background-color: var(--primary-color);
+            color: var(--bg-dark);
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+        
+        /* --- Modern Section Headers --- */
+        .section-header {
+            position: relative;
+            padding-bottom: 0.75rem;
+            margin-bottom: 3rem;
+        }
+        .section-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        /* --- Content Cards (Used for multiple sections) --- */
+        .content-card {
+            background-color: var(--bg-light-dark);
+            border: 1px solid #1e3a50;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        .content-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            border-color: var(--primary-color);
+        }
+        
+        /* --- Form --- */
+        .form-input {
+            background-color: var(--bg-light-dark);
+            border: 1px solid #1e3a50;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px var(--primary-glow);
+        }
+        
+        /* --- Custom Scrollbar --- */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="header sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-white">Portfolio</a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="nav-link text-gray-300 hover:text-white transition duration-300">Home</a>
+                <a href="#about" class="nav-link text-gray-300 hover:text-white transition duration-300">About</a>
+                <a href="#skills" class="nav-link text-gray-300 hover:text-white transition duration-300">Skills</a>
+                <a href="#projects" class="nav-link text-gray-300 hover:text-white transition duration-300">Projects</a>
+                <a href="#certs" class="nav-link text-gray-300 hover:text-white transition duration-300">Certificates</a>
+                <a href="#contact" class="nav-link text-gray-300 hover:text-white transition duration-300">Contact</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-gray-300">
+                <i class="ph-list text-3xl"></i>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4 space-y-2">
+             <a href="#home" class="block text-gray-300 hover:text-white">Home</a>
+             <a href="#about" class="block text-gray-300 hover:text-white">About</a>
+             <a href="#skills" class="block text-gray-300 hover:text-white">Skills</a>
+             <a href="#projects" class="block text-gray-300 hover:text-white">Projects</a>
+             <a href="#certs" class="block text-gray-300 hover:text-white">Certificates</a>
+             <a href="#contact" class="block text-gray-300 hover:text-white">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero-section min-h-screen flex items-center">
+            <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-12">
+                <div class="md:w-1/2 text-center md:text-left">
+                    <h3 class="text-3xl font-semibold">Hello, It's Me</h3>
+                    <h1 class="text-5xl md:text-6xl font-bold my-2">Ujjawal Shrivastava</h1>
+                    <h2 class="text-3xl font-semibold">And I'm a <span id="typed-text" class="text-[var(--primary-color)]"></span></h2>
+                    <p class="mt-4 max-w-lg mx-auto md:mx-0 text-[var(--text-secondary)]">
+                        Aspiring Data Scientist passionate about transforming complex data into tangible business value using Python, SQL, and Google Cloud.
+                    </p>
+                    <div class="mt-8 flex justify-center md:justify-start items-center gap-4">
+                        <a href="https://github.com/your-username" target="_blank" class="social-icon w-12 h-12 rounded-full flex items-center justify-center"><i class="ph-github-logo text-3xl"></i></a>
+                        <a href="https://www.linkedin.com/in/ujjawal-shrivastava15" target="_blank" class="social-icon w-12 h-12 rounded-full flex items-center justify-center"><i class="ph-linkedin-logo text-3xl"></i></a>
+                         <a href="#" class="cta-button font-semibold px-6 py-3 rounded-full ml-4">Download Resume</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 mt-10 md:mt-0">
+                     <img src="xyz.jpg" alt="Tech Graphic" class="hero-image-glow w-full max-w-md mx-auto">
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center section-header">About Me</h2>
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="md:w-1/3">
+                        <img src="https://placehold.co/400x400/112E42/00E5FF?text=Ujjawal+S." alt="Ujjawal Shrivastava" class="rounded-full shadow-lg mx-auto border-4 border-[var(--primary-color)] shadow-[0_0_20px_var(--primary-glow)]">
+                    </div>
+                    <div class="md:w-2/3">
+                        <p class="text-[var(--text-secondary)] mb-6 text-lg">
+                            I am a final-year Computer Science student specializing in Data Science. My goal is to leverage my analytical skills and programming knowledge to solve complex problems. I am deeply interested in the entire data lifecycle, from wrangling and analysis to building and deploying machine learning models, with a special focus on cloud technologies like Google Cloud Platform (GCP).
+                        </p>
+                        <a href="#contact" class="cta-button font-semibold px-6 py-3 rounded-full">Let's Talk</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center section-header">My Skills</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Languages & Databases -->
+                    <div class="content-card rounded-lg p-6 text-center">
+                        <i class="ph-code-simple-bold text-5xl text-[var(--primary-color)] mx-auto mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-2">Languages & Databases</h3>
+                        <p class="text-[var(--text-secondary)]">Python, SQL</p>
+                    </div>
+                    <!-- Libraries & Frameworks -->
+                    <div class="content-card rounded-lg p-6 text-center">
+                        <i class="ph-books-bold text-5xl text-[var(--primary-color)] mx-auto mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-2">Libraries & Frameworks</h3>
+                        <p class="text-[var(--text-secondary)]">Pandas, NumPy, Matplotlib, Scikit-learn</p>
+                    </div>
+                    <!-- Tools & Platforms -->
+                    <div class="content-card rounded-lg p-6 text-center">
+                        <i class="ph-cloud-bold text-5xl text-[var(--primary-color)] mx-auto mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-2">Tools & Platforms</h3>
+                        <p class="text-[var(--text-secondary)]">Google Cloud (GCP), BigQuery, Git, GitHub</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Projects Section -->
+        <section id="projects" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center section-header">My Projects</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project Card -->
+                    <div class="content-card rounded-lg overflow-hidden">
+                        <img src="https://placehold.co/600x400/112E42/00E5FF?text=Project+1" alt="Project 1" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-white">Customer Churn Prediction</h3>
+                            <p class="text-[var(--text-secondary)] mb-4">A machine learning model to predict customer churn, helping businesses retain customers.</p>
+                            <a href="#" class="font-semibold text-[var(--primary-color)] hover:underline inline-flex items-center gap-1">View Project <i class="ph-arrow-right-bold"></i></a>
+                        </div>
+                    </div>
+                     <!-- Project Card -->
+                    <div class="content-card rounded-lg overflow-hidden">
+                        <img src="https://placehold.co/600x400/112E42/00E5FF?text=Project+2" alt="Project 2" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-white">Sales Dashboard</h3>
+                            <p class="text-[var(--text-secondary)] mb-4">An interactive dashboard built to visualize sales data, track KPIs, and identify trends.</p>
+                            <a href="#" class="font-semibold text-[var(--primary-color)] hover:underline inline-flex items-center gap-1">View Project <i class="ph-arrow-right-bold"></i></a>
+                        </div>
+                    </div>
+                    <!-- Project Card -->
+                    <div class="content-card rounded-lg overflow-hidden">
+                        <img src="https://placehold.co/600x400/112E42/00E5FF?text=Project+3" alt="Project 3" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-white">Cloud Data Warehouse</h3>
+                            <p class="text-[var(--text-secondary)] mb-4">Designed a scalable data warehouse on GCP using BigQuery for efficient querying.</p>
+                            <a href="#" class="font-semibold text-[var(--primary-color)] hover:underline inline-flex items-center gap-1">View Project <i class="ph-arrow-right-bold"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certificates Section -->
+        <section id="certs" class="py-20">
+             <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center section-header">Certificates</h2>
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                     <!-- Certificate Card -->
+                     <div class="content-card rounded-lg p-6 flex items-center gap-6">
+                         <i class="ph-microsoft-excel-logo-fill text-5xl text-[var(--primary-color)]"></i>
+                         <div>
+                             <h3 class="text-xl font-bold text-white">Microsoft Certified</h3>
+                             <p class="text-[var(--text-secondary)]">Azure Fundamentals</p>
+                         </div>
+                     </div>
+                     <!-- Certificate Card -->
+                     <div class="content-card rounded-lg p-6 flex items-center gap-6">
+                         <i class="ph-brain-bold text-5xl text-[var(--primary-color)]"></i>
+                         <div>
+                             <h3 class="text-xl font-bold text-white">PwC</h3>
+                             <p class="text-[var(--text-secondary)]">Generative AI Virtual Internship</p>
+                         </div>
+                     </div>
+                 </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center section-header">Get In Touch</h2>
+                <div class="max-w-xl mx-auto">
+                    <form action="#" method="POST" class="space-y-6">
+                        <input type="text" name="name" class="form-input w-full px-4 py-3 rounded-lg" placeholder="Your Name" required>
+                        <input type="email" name="email" id="email" class="form-input w-full px-4 py-3 rounded-lg" placeholder="Your Email" required>
+                        <textarea name="message" id="message" rows="5" class="form-input w-full px-4 py-3 rounded-lg" placeholder="Your Message" required></textarea>
+                        <button type="submit" class="cta-button w-full font-semibold px-8 py-3 rounded-full">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-white/10">
+        <div class="container mx-auto px-6 text-center text-[var(--text-secondary)]">
+             <div class="flex justify-center items-center space-x-6 mb-4">
+                <a href="https://www.linkedin.com/in/ujjawal-shrivastava15" target="_blank" class="text-gray-400 hover:text-white transition-colors"><i class="ph-linkedin-logo text-3xl"></i></a>
+                <a href="https://github.com/your-username" target="_blank" class="text-gray-400 hover:text-white transition-colors"><i class="ph-github-logo text-3xl"></i></a>
+            </div>
+            <p>&copy; 2025 Ujjawal Shrivastava. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Typed.js animation
+        const options = {
+            strings: ['Data Scientist', 'Data Analyst', 'Cloud Enthusiast'],
+            typeSpeed: 70,
+            backSpeed: 50,
+            loop: true
+        };
+        const typed = new Typed('#typed-text', options);
+    </script>
+</body>
+</html>
+
