@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Clone</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #E3E6E6;
+        }
+        :root {
+            --amazon-dark-blue: #131921;
+            --amazon-light-blue: #232F3E;
+            --amazon-yellow: #FEBD69;
+            --amazon-yellow-hover: #F3A847;
+        }
+        .amazon-dark-blue { background-color: var(--amazon-dark-blue); }
+        .amazon-light-blue { background-color: var(--amazon-light-blue); }
+        .amazon-yellow { background-color: var(--amazon-yellow); }
+        .amazon-yellow-hover:hover { background-color: var(--amazon-yellow-hover); }
+
+        .nav-link-hover {
+            border: 1px solid transparent;
+        }
+        .nav-link-hover:hover {
+            border: 1px solid white;
+        }
+        .product-card-grid {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+        }
+        .carousel-container {
+            overflow-x: scroll;
+            scrollbar-width: none; /* Firefox */
+        }
+        .carousel-container::-webkit-scrollbar { 
+            display: none; /* Safari and Chrome */
+        }
+    </style>
+</head>
+<body class="bg-gray-200">
+
+    <header class="sticky top-0 z-50">
+        <nav class="amazon-dark-blue text-white flex items-center justify-between p-2">
+            <div class="nav-link-hover p-1 rounded-sm">
+                <a href="#"><img src="https://pngimg.com/uploads/amazon/amazon_PNG11.png" alt="Amazon Logo" class="h-8 w-auto"></a>
+            </div>
+
+            <div class="hidden md:flex items-center nav-link-hover p-2 rounded-sm">
+                <i class="ph-map-pin text-xl"></i>
+                <div class="ml-1">
+                    <span class="text-xs text-gray-300">Deliver to</span>
+                    <p class="text-sm font-bold">Ghaziabad</p>
+                </div>
+            </div>
+
+            <div class="flex-grow flex items-center mx-4">
+                <select class="hidden md:block bg-gray-200 text-gray-700 text-xs p-2.5 rounded-l-md border-r border-gray-300 h-10">
+                    <option>All</option>
+                    <option>Electronics</option>
+                    <option>Books</option>
+                    <option>Home & Kitchen</option>
+                </select>
+                <input type="text" class="w-full h-10 px-4 focus:outline-none" placeholder="Search Amazon">
+                <button class="amazon-yellow amazon-yellow-hover h-10 w-12 flex items-center justify-center rounded-r-md">
+                    <i class="ph-magnifying-glass text-2xl text-gray-800"></i>
+                </button>
+            </div>
+            
+            <div class="hidden md:flex items-center space-x-4">
+                <div class="nav-link-hover p-2 rounded-sm">
+                    <span class="text-xs">Hello, sign in</span>
+                    <p class="text-sm font-bold">Account & Lists</p>
+                </div>
+                <div class="nav-link-hover p-2 rounded-sm">
+                    <span class="text-xs">Returns</span>
+                    <p class="text-sm font-bold">& Orders</p>
+                </div>
+                <div class="nav-link-hover p-2 rounded-sm flex items-center">
+                    <i class="ph-shopping-cart text-3xl"></i>
+                    <span class="text-sm font-bold mt-2">Cart</span>
+                </div>
+            </div>
+        </nav>
+
+        <nav class="amazon-light-blue text-white flex items-center space-x-4 p-2 text-sm">
+            <a href="#" class="flex items-center nav-link-hover p-1 rounded-sm"><i class="ph-list text-xl mr-1"></i>All</a>
+            <a href="#" class="nav-link-hover p-1 rounded-sm">Today's Deals</a>
+            <a href="#" class="nav-link-hover p-1 rounded-sm">Customer Service</a>
+            <a href="#" class="nav-link-hover p-1 rounded-sm">Registry</a>
+            <a href="#" class="nav-link-hover p-1 rounded-sm">Gift Cards</a>
+            <a href="#" class="nav-link-hover p-1 rounded-sm">Sell</a>
+        </nav>
+    </header>
+
+    <main class="max-w-7xl mx-auto p-4">
+        <div class="h-60 md:h-80 bg-cover bg-center mb-6" style="background-image: url('https://placehold.co/1500x600/E3E6E6/000000?text=Hero+Banner+Ad')">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-white p-4">
+                <h2 class="text-xl font-bold mb-2">Gaming accessories</h2>
+                <div class="product-card-grid gap-4 mb-4">
+                    <div><img src="https://placehold.co/200x200/F0F2F2/000?text=Headsets" class="w-full h-full object-cover"><span class="text-xs">Headsets</span></div>
+                    <div><img src="https://placehold.co/200x200/F0F2F2/000?text=Keyboards" class="w-full h-full object-cover"><span class="text-xs">Keyboards</span></div>
+                    <div><img src="https://placehold.co/200x200/F0F2F2/000?text=Mice" class="w-full h-full object-cover"><span class="text-xs">Mice</span></div>
+                    <div><img src="https://placehold.co/200x200/F0F2F2/000?text=Chairs" class="w-full h-full object-cover"><span class="text-xs">Chairs</span></div>
+                </div>
+                <a href="#" class="text-sm text-cyan-700 hover:text-orange-700">See more</a>
+            </div>
+             <div class="bg-white p-4">
+                <h2 class="text-xl font-bold mb-2">Deals in PCs</h2>
+                <img src="https://placehold.co/400x370/F0F2F2/000?text=PC+Deals" class="w-full h-auto mb-4 object-cover">
+                <a href="#" class="text-sm text-cyan-700 hover:text-orange-700">Shop now</a>
+            </div>
+             <div class="bg-white p-4">
+                <h2 class="text-xl font-bold mb-2">Toys under $25</h2>
+                <img src="https://placehold.co/400x370/F0F2F2/000?text=Toys" class="w-full h-auto mb-4 object-cover">
+                <a href="#" class="text-sm text-cyan-700 hover:text-orange-700">Shop now</a>
+            </div>
+            <div class="bg-white p-4">
+                <h2 class="text-xl font-bold mb-2">Refresh your space</h2>
+                <div class="product-card-grid gap-4 mb-4">
+                    <div><img src="https://placehold.co/200x200/F0F2F2/000?text=Dining" class="w-full h-full object-cover"><span class="text-xs">Dining</span></div>
+                    <div><img src="https://placehold.co/200x200/F0F2F2/000?text=Home" class="w-full h-full object-cover"><span class="text-xs">Home</span></div>
+                    <div><img src="https://placehold.co/200x200/F0F2F2/000?text=Kitchen" class="w-full h-full object-cover"><span class="text-xs">Kitchen</span></div>
+                    <div><img src="https://placehold.co/200x200/F0F2F2/000?text=Health" class="w-full h-full object-cover"><span class="text-xs">Health & Beauty</span></div>
+                </div>
+                <a href="#" class="text-sm text-cyan-700 hover:text-orange-700">See more</a>
+            </div>
+        </div>
+
+        <div class="bg-white p-4 mt-6">
+            <h2 class="text-xl font-bold mb-2">Top Sellers in Books for you</h2>
+            <div class="carousel-container flex space-x-4 py-2">
+                <img src="https://placehold.co/150x200/F0F2F2/000?text=Book+1" alt="Book 1" class="h-48">
+                <img src="https://placehold.co/150x200/F0F2F2/000?text=Book+2" alt="Book 2" class="h-48">
+                <img src="https://placehold.co/150x200/F0F2F2/000?text=Book+3" alt="Book 3" class="h-48">
+                <img src="https://placehold.co/150x200/F0F2F2/000?text=Book+4" alt="Book 4" class="h-48">
+                <img src="https://placehold.co/150x200/F0F2F2/000?text=Book+5" alt="Book 5" class="h-48">
+                <img src="https://placehold.co/150x200/F0F2F2/000?text=Book+6" alt="Book 6" class="h-48">
+                <img src="https://placehold.co/150x200/F0F2F2/000?text=Book+7" alt="Book 7" class="h-48">
+            </div>
+        </div>
+    </main>
+    
+    <footer class="mt-6">
+        <div class="amazon-light-blue text-center text-white py-4 text-sm hover:bg-gray-700">
+            <a href="#">Back to top</a>
+        </div>
+        <div class="amazon-dark-blue text-white p-10">
+            <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="font-bold mb-2">Get to Know Us</h3>
+                    <ul class="text-sm space-y-2 text-gray-300">
+                        <li><a href="#" class="hover:underline">Careers</a></li>
+                        <li><a href="#" class="hover:underline">Blog</a></li>
+                        <li><a href="#" class="hover:underline">About Amazon</a></li>
+                        <li><a href="#" class="hover:underline">Investor Relations</a></li>
+                    </ul>
+                </div>
+                 <div>
+                    <h3 class="font-bold mb-2">Make Money with Us</h3>
+                    <ul class="text-sm space-y-2 text-gray-300">
+                        <li><a href="#" class="hover:underline">Sell products on Amazon</a></li>
+                        <li><a href="#" class="hover:underline">Sell on Amazon Business</a></li>
+                        <li><a href="#" class="hover:underline">Become an Affiliate</a></li>
+                        <li><a href="#" class="hover:underline">Advertise Your Products</a></li>
+                    </ul>
+                </div>
+                 <div>
+                    <h3 class="font-bold mb-2">Amazon Payment Products</h3>
+                    <ul class="text-sm space-y-2 text-gray-300">
+                        <li><a href="#" class="hover:underline">Amazon Business Card</a></li>
+                        <li><a href="#" class="hover:underline">Shop with Points</a></li>
+                        <li><a href="#" class="hover:underline">Reload Your Balance</a></li>
+                        <li><a href="#" class="hover:underline">Amazon Currency Converter</a></li>
+                    </ul>
+                </div>
+                 <div>
+                    <h3 class="font-bold mb-2">Let Us Help You</h3>
+                    <ul class="text-sm space-y-2 text-gray-300">
+                        <li><a href="#" class="hover:underline">Amazon and COVID-19</a></li>
+                        <li><a href="#" class="hover:underline">Your Account</a></li>
+                        <li><a href="#" class="hover:underline">Your Orders</a></li>
+                        <li><a href="#" class="hover:underline">Help</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="amazon-dark-blue border-t border-gray-700 py-6 text-center">
+            <img src="https://pngimg.com/uploads/amazon/amazon_PNG11.png" alt="Amazon Logo" class="h-8 w-auto mx-auto">
+        </div>
+    </footer>
+
+</body>
+</html>
+
