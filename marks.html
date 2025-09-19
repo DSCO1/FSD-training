@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Marks System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+      padding: 30px;
+      gap: 30px; /* Added gap for better spacing */
+    }
+
+    /* Left Side */
+    .left {
+      width: 65%;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    p {
+      color: #666;
+      font-size: 14px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background: white;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    table th, table td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: left;
+    }
+
+    table th {
+      background: #007bff;
+      color: white;
+    }
+
+    .note {
+      margin-top: 20px;
+      font-size: 13px;
+      color: #444;
+    }
+
+    /* Right Side Controls */
+    .right {
+      width: 30%;
+      background: #fff;
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      border-radius: 6px;
+    }
+
+    .right h3 {
+      margin-top: 0;
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      text-align: center;
+      font-size: 14px;
+      box-sizing: border-box; /* Ensures padding doesn't affect width */
+    }
+
+    .btn:hover {
+      background: #0056b3;
+    }
+
+    .input-group {
+      margin-top: 15px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box; /* Ensures padding doesn't affect width */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="left">
+      <h1>Student Marks System</h1>
+      <p>A simple interactive demo to manage and view student marks.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Marks</th>
+          </tr>
+        </thead>
+        <tbody id="student-table-body">
+          </tbody>
+      </table>
+
+      <p class="note">Click controls on the right to interact with the student list.</p>
+    </div>
+
+    <div class="right">
+      <h3>Controls</h3>
+      <button class="btn" id="btn-highest">Show Highest</button>
+      <button class="btn" id="btn-average">Show Average</button>
+      <button class="btn" id="btn-sort">Sort by Marks</button>
+      <button class="btn" id="btn-remove-last">Remove Last</button>
+      <button class="btn" id="btn-reset">Reset</button>
+
+      <div class="input-group">
+        <input type="text" id="student-name-input" placeholder="Student name">
+        <input type="number" id="student-marks-input" placeholder="Marks">
+        <button class="btn" id="btn-add">Add Student</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+  // --- DATA ---
+  const initialStudents = [
+    { name: 'Amit', marks: 85 },
+    { name: 'Priya', marks: 92 },
+    { name: 'Rahul', marks: 76 },
+    { name: 'Sneha', marks: 88 },
+    { name: 'Karan', marks: 95 },
+  ];
+  
+  // Create a working copy of the data
+  let students = [...initialStudents];
+
+  // --- DOM ELEMENTS ---
+  const tableBody = document.getElementById('student-table-body');
+  const nameInput = document.getElementById('student-name-input');
+  const marksInput = document.getElementById('student-marks-input');
+
+  // --- FUNCTIONS ---
+
+  /**
+   * Renders the student data into the HTML table.
+   */
+  const renderTable = () => {
+    tableBody.innerHTML = ''; // Clear existing rows
+    if (students.length === 0) {
+        const row = document.createElement('tr');
+        row.innerHTML = `<td colspan="2" style="text-align:center;">No students to display.</td>`;
+        tableBody.appendChild(row);
+        return;
+    }
+    students.forEach(student => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${student.name}</td>
+        <td>${student.marks}</td>
+      `;
+      tableBody.appendChild(row);
+    });
+  };
+
+  /**
+   * Adds a new student to the list.
+   */
+  const addStudent = () => {
+    const name = nameInput.value.trim();
+    const marks = parseInt(marksInput.value, 10);
+
+    if (name && !isNaN(marks) && marks >= 0 && marks <= 100) {
+      students.push({ name, marks });
+      nameInput.value = '';
+      marksInput.value = '';
+      renderTable();
+    } else {
+      alert('Please enter a valid name and marks (0-100).');
+    }
+  };
+
+  /**
+   * Shows the student with the highest marks.
+   */
+  const showHighest = () => {
+    if (students.length === 0) {
+        alert('There are no students in the list.');
+        return;
+    }
+    const highest = students.reduce((prev, current) => (prev.marks > current.marks) ? prev : current);
+    alert(`Highest Marks: ${highest.name} with ${highest.marks}`);
+  };
+
+  /**
+   * Calculates and shows the average marks.
+   */
+  const showAverage = () => {
+    if (students.length === 0) {
+        alert('There are no students to calculate an average for.');
+        return;
+    }
+    const total = students.reduce((sum, student) => sum + student.marks, 0);
+    const average = total / students.length;
+    alert(`Average Marks: ${average.toFixed(2)}`);
+  };
+  
+  /**
+   * Sorts students by marks in descending order.
+   */
+  const sortByMarks = () => {
+    students.sort((a, b) => b.marks - a.marks);
+    renderTable();
+  };
+
+  /**
+   * Removes the last student from the list.
+   */
+  const removeLast = () => {
+    if (students.length > 0) {
+        students.pop();
+        renderTable();
+    } else {
+        alert('The list is already empty.');
+    }
+  };
+
+  /**
+   * Resets the student list to the initial state.
+   */
+  const resetList = () => {
+    students = [...initialStudents]; // Create a fresh copy
+    renderTable();
+  };
+
+  // --- EVENT LISTENERS ---
+  document.getElementById('btn-add').addEventListener('click', addStudent);
+  document.getElementById('btn-highest').addEventListener('click', showHighest);
+  document.getElementById('btn-average').addEventListener('click', showAverage);
+  document.getElementById('btn-sort').addEventListener('click', sortByMarks);
+  document.getElementById('btn-remove-last').addEventListener('click', removeLast);
+  document.getElementById('btn-reset').addEventListener('click', resetList);
+  
+  // Allow adding student by pressing Enter in the marks input
+  marksInput.addEventListener('keyup', (event) => {
+    if (event.key === 'Enter') {
+        addStudent();
+    }
+  });
+
+  // --- INITIAL RENDER ---
+  // Render the table when the page loads
+  document.addEventListener('DOMContentLoaded', renderTable);
+
+</script>
+</body>
+</html>
