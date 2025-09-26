@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Marks Management</title>
+</head>
+<body>
+
+    <div>
+        <h1>Student Marks Management</h1>
+
+    
+        <div>
+            <h2>Add a New Student</h2>
+            <div>
+                <div>
+                    <label for="studentName">Student Name</label>
+                    <br>
+                    <input type="text" id="studentName" placeholder="e.g., Sanket">
+                </div>
+                <br>
+                <div>
+                    <label for="studentMarks">Marks</label>
+                    <br>
+                    <input type="number" id="studentMarks" placeholder="e.g., 85">
+                </div>
+                <br>
+                <button id="addStudentBtn">
+                    Add Student
+                </button>
+            </div>
+        </div>
+
+        <hr>
+        <div>
+             <h2>Dashboard & Reports</h2>
+            <div>
+                <button id="showAllBtn">Show All</button>
+                <button id="showPassingBtn">Show Passing</button>
+                <button id="calcAverageBtn">Average Marks</button>
+                <button id="findTopperBtn">Find Topper</button>
+            </div>
+        </div>
+        
+        <hr>
+
+        
+        <div id="resultsArea">
+            <h2 id="resultsTitle">Results</h2>
+            <div id="resultsContent">
+                
+                <p>Add a student or click a button to see the results.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        
+        const studentNameInput = document.getElementById('studentName');
+        const studentMarksInput = document.getElementById('studentMarks');
+        const addStudentBtn = document.getElementById('addStudentBtn');
+        const showAllBtn = document.getElementById('showAllBtn');
+        const showPassingBtn = document.getElementById('showPassingBtn');
+        const calcAverageBtn = document.getElementById('calcAverageBtn');
+        const findTopperBtn = document.getElementById('findTopperBtn');
+        const resultsTitle = document.getElementById('resultsTitle');
+        const resultsContent = document.getElementById('resultsContent');
+
+        
+        let students = [];
+
+        
+
+
+        addStudentBtn.addEventListener('click', () => {
+            const name = studentNameInput.value.trim();
+            const marks = parseFloat(studentMarksInput.value);
+
+        
+            if (name === '') {
+                resultsContent.innerHTML = `<p style="color: red;">Please enter a student name.</p>`;
+                return;
+            }
+            if (isNaN(marks) || marks < 0 || marks > 100) {
+                resultsContent.innerHTML = `<p style="color: red;">Please enter valid marks between 0 and 100.</p>`;
+                return;
+            }
+
+        
+            students.push({ name, marks });
+
+            
+            studentNameInput.value = '';
+            studentMarksInput.value = '';
+            studentNameInput.focus();
+
+        
+            renderStudents(students, 'All Students');
+        });
+
+        
+        showAllBtn.addEventListener('click', () => {
+            renderStudents(students, 'All Students');
+        });
+
+
+        showPassingBtn.addEventListener('click', () => {
+            const passingStudents = students.filter(student => student.marks >= 40);
+            renderStudents(passingStudents, 'Passing Students (>= 40)');
+        });
+
+        
+        calcAverageBtn.addEventListener('click', () => {
+            resultsTitle.textContent = 'Average Marks';
+            if (students.length === 0) {
+                resultsContent.innerHTML = '<p>No students to calculate average from.</p>';
+                return;
+            }
+            
+            const totalMarks = students.reduce((sum, student) => sum + student.marks, 0);
+            const average = totalMarks / students.length;
+            resultsContent.innerHTML = `<div><p>The average mark is ${average.toFixed(2)}</p></div>`;
+        });
+
+        
+        findTopperBtn.addEventListener('click', () => {
+            resultsTitle.textContent = 'Class Topper';
+            if (students.length === 0) {
+                resultsContent.innerHTML = '<p>No students to find a topper from.</p>';
+                return;
+            }
+            
+            const topper = students.reduce((max, student) => student.marks > max.marks ? student : max, students[0]);
+
+            resultsContent.innerHTML = `
+                <div>
+                    <p>The topper is:</p>
+                    <p><b>${topper.name}</b></p>
+                    <p>with ${topper.marks} marks!</p>
+                </div>
+            `;
+        });
+
+
+    
+        function renderStudents(studentArray, title) {
+            resultsTitle.textContent = title;
+            resultsContent.innerHTML = ''; 
+
+            if (studentArray.length === 0) {
+                resultsContent.innerHTML = '<p>No students to display.</p>';
+                return;
+            }
+
+            const list = document.createElement('div');
+
+            studentArray.forEach(student => {
+                const item = document.createElement('div');
+                
+                
+                const statusColor = student.marks >= 40 ? 'green' : 'red';
+                
+                item.innerHTML = `
+                    <span>${student.name}</span>
+                    - 
+                    <span style="font-weight: bold; color: ${statusColor};">${student.marks}</span>
+                `;
+                list.appendChild(item);
+            });
+
+            resultsContent.appendChild(list);
+        }
+    </script>
+
+</body>
+</html>
