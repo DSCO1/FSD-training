@@ -1,0 +1,13 @@
+.App {
+  text-align: center;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  padding: 30px;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
