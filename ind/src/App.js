@@ -1,6 +1,8 @@
 import React from 'react';
 import Card from './Card';
+import Navbar from './Navbar';cd 
 import './App.css';
+
 import car1 from './assets/car1.jpg';
 import car2 from './assets/car2.jpg';
 import car3 from './assets/car3.jpg';
@@ -8,6 +10,7 @@ import car3 from './assets/car3.jpg';
 function App() {
   return (
     <div className="App">
+      <Navbar />
       <h1>Vehicle Display App</h1>
 
       <div className="card-container">

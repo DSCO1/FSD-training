@@ -1,0 +1,92 @@
+/* Global Styling */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f5f6fa;
+}
+
+/* Navbar */
+nav {
+  background: #1e272e;
+  padding: 14px 20px;
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  color: white;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Page Wrapper */
+.page {
+  padding: 20px 40px;
+}
+
+/* Form Styling */
+form {
+  background: white;
+  padding: 25px;
+  width: 350px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+form input {
+  width: 100%;
+  padding: 10px;
+  margin: 12px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: #2d98da;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #227093;
+}
+
+/* Card */
+.card-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 250px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+  margin-top: 0;
+}
+
+.card p {
+  color: #555;
+}
+
+.center-page {
+  height: 80vh;           /* take full height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
